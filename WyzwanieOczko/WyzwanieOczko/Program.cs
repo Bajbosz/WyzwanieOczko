@@ -39,15 +39,12 @@ end.Add(result2);
 if ( end.Max() == result0)
 { 
     Console.WriteLine(user0.Name +" "+ user0.SurName + " " + user0.Age + " " + user0.Result);
-    Console.WriteLine(end.Max());
 }
  else if ( end.Max() == result1)
 { 
     Console.WriteLine(user1.Name + " " + user1.SurName + "  " + user1.Age + "  " + user1.Result);
-    Console.WriteLine(end.Max());
 }
 else if ( end.Max() == result2)
 {
     Console.WriteLine(user2.Name + "  " + user2.SurName + "  " + user2.Age + "  " + user2.Result);
-    Console.WriteLine(end.Max());
 }
