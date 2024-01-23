@@ -7,7 +7,7 @@ namespace WyzwanieOczkoTests
         [Test]
         public void ThreeNumberAdd_ReturnSum()
         {
-            var employee = new Employee("","",12);
+            var employee = new Employee("", "", 12);
             employee.AddScore(3);
             employee.AddScore(-8);
             employee.AddScore(7);
@@ -16,5 +16,6 @@ namespace WyzwanieOczkoTests
 
             Assert.AreEqual(2, result);
         }
+
     }
 }
