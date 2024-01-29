@@ -74,6 +74,55 @@ namespace WyzwanieOczko
             statistics.Avg /= this.score.Count;
             return statistics;
         }
+        public Statistics GetStatisticsFor()
+        {
+            var statistics = new Statistics();
+            statistics.Avg = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+            for (int i = 0; i < this.score.Count; i++)
+            {
+                statistics.Max = Math.Max(statistics.Max, this.score[i]);
+                statistics.Min = Math.Min(statistics.Min, this.score[i]);
+                statistics.Avg += this.score[i];
+            }
+            statistics.Avg /= this.score.Count;
+            return statistics;
+        }
+        public Statistics GetStatisticsDoWhile()
+        {
+            var statistics = new Statistics();
+            statistics.Avg = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+            var index = 0;
+            do
+            {
+                statistics.Max = Math.Max(statistics.Max, this.score[index]);
+                statistics.Min = Math.Min(statistics.Min, this.score[index]);
+                statistics.Avg += this.score[index];
+                index++;
+            } while (index < this.score.Count);
+            statistics.Avg /= this.score.Count;
+            return statistics;
+        }    
+        public Statistics GetStatisticsWhile()
+        {
+            var statistics = new Statistics();
+            statistics.Avg = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+            var index = 0;
+            while (index < this.score.Count) 
+            {
+                statistics.Max = Math.Max(statistics.Max, this.score[index]);
+                statistics.Min = Math.Min(statistics.Min, this.score[index]);
+                statistics.Avg += this.score[index];
+                index++;
+            }
+            statistics.Avg /= this.score.Count;
+            return statistics;
+        }
     }
 }
 
