@@ -3,6 +3,16 @@
 Employee user0 = new Employee("Adam", "Moto", 13);
 Employee user1 = new Employee("Antonio", "Moto", 15);
 Employee user2 = new Employee("Abraham", "Moto", 19);
+
+user0.AddScore("2000");
+user0.AddScore("Tak");
+user0.AddScore(6);
+user0.AddScore(6);
+var statistics =user0.GetStatistics();
+
+Console.WriteLine($"dane: {statistics.Max}");
+
+
 /*
 List<Employee> PunktList = new List<Employee>()
 { 

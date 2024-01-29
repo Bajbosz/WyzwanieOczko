@@ -1,4 +1,5 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿using System.ComponentModel.Design;
+using System.Reflection.Metadata.Ecma335;
 
 namespace WyzwanieOczko
 {
@@ -26,7 +27,37 @@ namespace WyzwanieOczko
         }
         public void AddScore(float punkt)
         {
-            this.score.Add(punkt);
+            if (punkt >=0 && punkt<=100)
+            {
+                this.score.Add(punkt);           
+            }
+            else 
+            {
+                Console.WriteLine("Wrong data");
+            }
+        }
+        public void AddScore(string punkt)
+        {
+            if(float.TryParse(punkt,out float result))
+            {
+                this.AddScore(result);
+            }
+            else
+            {
+                Console.WriteLine("Wrong string");
+            }
+        }
+        public void AddScore(int punkt)
+        {
+            this.AddScore((float)punkt);
+        }
+        public void AddScore(double punkt)
+        {
+            this.AddScore((float)punkt);
+        }
+        public void AddScore(long punkt)
+        {
+            this.AddScore((float)punkt);
         }
         public Statistics GetStatistics()
         {
