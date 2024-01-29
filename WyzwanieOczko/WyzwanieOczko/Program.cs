@@ -3,7 +3,7 @@
 Employee user0 = new Employee("Adam", "Moto", 13);
 Employee user1 = new Employee("Antonio", "Moto", 15);
 Employee user2 = new Employee("Abraham", "Moto", 19);
-
+/*
 List<Employee> PunktList = new List<Employee>()
 { 
     user0, user1, user2
@@ -36,4 +36,4 @@ foreach (var item in PunktList)
     {
         Console.WriteLine(item.Name + " " + item.SurName + " " + item.Age + " " + item.Result);
     }
-}
+}*/
