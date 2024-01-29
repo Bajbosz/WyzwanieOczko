@@ -59,6 +59,36 @@ namespace WyzwanieOczko
         {
             this.AddScore((float)punkt);
         }
+        public void AddScore(char punkt)
+        {
+            switch (punkt)
+            {
+                case 'A':
+                case 'a':
+                    this.score.Add(100);
+                    break;
+                case 'B':
+                case 'b':
+                    this.score.Add(80);
+                    break;
+                case 'C':
+                case 'c':
+                    this.score.Add(60);
+                    break;
+                case 'D':
+                case 'd':
+                    this.score.Add(40);
+                    break;
+                case 'E':
+                case 'e':
+                    this.score.Add(50);
+                    break;
+                default:
+                    Console.WriteLine("Wrong Letter");
+                    break;
+
+            }
+        }
         public Statistics GetStatistics()
         {
             var statistics = new Statistics();
@@ -72,6 +102,24 @@ namespace WyzwanieOczko
                 statistics.Avg += score;
             }
             statistics.Avg /= this.score.Count;
+            switch(statistics.Avg)
+            {
+                case var avg when avg > 80:
+                        statistics.AvgLetter = 'A';
+                    break;
+                case var avg when avg > 60:
+                    statistics.AvgLetter = 'B';
+                    break;
+                case var avg when avg > 40:
+                    statistics.AvgLetter = 'C';
+                    break;
+                case var avg when avg > 20:
+                    statistics.AvgLetter = 'D';
+                    break;
+                default:
+                    statistics.AvgLetter = 'E';
+                    break;
+            }
             return statistics;
         }
         public Statistics GetStatisticsFor()

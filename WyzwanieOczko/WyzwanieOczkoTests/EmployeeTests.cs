@@ -47,5 +47,17 @@ namespace WyzwanieOczkoTests
             //assert
             Assert.AreEqual(6, statistics.Avg);
         }
+        [Test]
+        public void AvgLetterValueShouldBeEqual()
+        {
+            //arrange
+            var employee = new Employee("Bartosz", "", 14);
+            employee.AddScore(60);
+            employee.AddScore(100);
+            //act
+            var statistics = employee.GetStatistics();
+            //assert
+            Assert.AreEqual('B', statistics.AvgLetter);
+        }
     }
 }
