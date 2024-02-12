@@ -3,18 +3,16 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace WyzwanieOczko
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> score = new List<float>();
 
         public Employee(string name, string surname, int age)
+           : base(name)
         {
-            this.Name = name;
             this.SurName = surname;
             this.Age = age;
         }
-
-        public string Name { get; private set; }
         public string SurName { get; private set; }
         public int Age { get; private set; }
 
@@ -65,23 +63,23 @@ namespace WyzwanieOczko
             {
                 case 'A':
                 case 'a':
-                    this.score.Add(100);
+                    this.AddScore(100);
                     break;
                 case 'B':
                 case 'b':
-                    this.score.Add(80);
+                    this.AddScore(80);
                     break;
                 case 'C':
                 case 'c':
-                    this.score.Add(60);
+                    this.AddScore(60);
                     break;
                 case 'D':
                 case 'd':
-                    this.score.Add(40);
+                    this.AddScore(40);
                     break;
                 case 'E':
                 case 'e':
-                    this.score.Add(50);
+                    this.AddScore(50);
                     break;
                 default:
                     throw new Exception("Wrong Letter");
