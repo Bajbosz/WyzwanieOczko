@@ -3,19 +3,24 @@ Console.WriteLine(" || Witamy w programie do oceny pracownika || ");
 Console.WriteLine("----------------------------------------------");
 Console.WriteLine("");
 Employee user0 = new Employee("Bartosz", "Moto", 44);
-while(true)
+while (true)
 {
-    Console.WriteLine("Podaj oceneę pracownika:");
-    var input = Console.ReadLine();
-    if(input == "q")
+        Console.WriteLine("Podaj oceneę pracownika:");
+        var input = Console.ReadLine();
+        if (input == "q")
+        {
+            break;
+        }
+    try
+    {
+        user0.AddScore(input);
+    } 
+    catch(Exception ex)
     { 
-        break; 
-    }
-    user0.AddScore(input);
+        Console.WriteLine(ex.Message);
+    }    
 }
-
 var statistics = user0.GetStatistics();
-
 Console.WriteLine($"Avg: {statistics.Avg}");
 Console.WriteLine($"Max: {statistics.Max}");
 Console.WriteLine($"Min: {statistics.Min}");

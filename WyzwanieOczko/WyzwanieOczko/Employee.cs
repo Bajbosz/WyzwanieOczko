@@ -33,7 +33,7 @@ namespace WyzwanieOczko
             }
             else 
             {
-                Console.WriteLine("Wrong data");
+                throw new Exception("Wrong data");
             }
         }
         public void AddScore(string punkt)
@@ -44,7 +44,7 @@ namespace WyzwanieOczko
             }
             else
             {
-                Console.WriteLine("Wrong string");
+                throw new Exception("Wrong string");
             }
         }
         public void AddScore(int punkt)
@@ -84,9 +84,7 @@ namespace WyzwanieOczko
                     this.score.Add(50);
                     break;
                 default:
-                    Console.WriteLine("Wrong Letter");
-                    break;
-
+                    throw new Exception("Wrong Letter");
             }
         }
         public Statistics GetStatistics()
