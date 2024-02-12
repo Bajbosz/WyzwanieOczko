@@ -7,15 +7,10 @@ namespace WyzwanieOczko
     {
         private List<float> score = new List<float>();
 
-        public Employee(string name, string surname, int age)
-           : base(name)
+        public Employee(string name, string surname, int age, char sex)
+           : base(name, surname, age, sex)
         {
-            this.SurName = surname;
-            this.Age = age;
         }
-        public string SurName { get; private set; }
-        public int Age { get; private set; }
-
         public float Result
         {
             get
