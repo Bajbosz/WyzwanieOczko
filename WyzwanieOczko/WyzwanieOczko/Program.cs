@@ -2,7 +2,7 @@
 Console.WriteLine(" || Witamy w programie do oceny pracownika || ");
 Console.WriteLine("----------------------------------------------");
 Console.WriteLine("");
-Employee user0 = new Employee("Bartosz", "Moto"); //, 44, 'M'
+Supervisor user0 = new Supervisor("Bartosz", "Moto"); //, 44, 'M'
 while (true)
 {
         Console.WriteLine("Podaj oceneę pracownika:");
