@@ -9,7 +9,7 @@ namespace WyzwanieOczkoTests
         public void MaxValueShouldBeEqual()
         {
             //arrange
-            var employee = new Employee("Bartosz","",14);
+            var employee = new Employee("Bartosz","",14, 'M');
             employee.AddScore(6);
             employee.AddScore(8);
             employee.AddScore(9);
@@ -23,7 +23,7 @@ namespace WyzwanieOczkoTests
         public void MinValueShouldBeEqual()
         {
             //arrange
-            var employee = new Employee("Bartosz", "", 14);
+            var employee = new Employee("Bartosz", "", 14, 'M') ;
             employee.AddScore(6);
             employee.AddScore(8);
             employee.AddScore(9);
@@ -37,7 +37,7 @@ namespace WyzwanieOczkoTests
         public void AvgValueShouldBeEqual()
         {
             //arrange
-            var employee = new Employee("Bartosz", "", 14);
+            var employee = new Employee("Bartosz", "", 14, 'M');
             employee.AddScore(6);
             employee.AddScore(8);
             employee.AddScore(9);
@@ -51,7 +51,7 @@ namespace WyzwanieOczkoTests
         public void AvgLetterValueShouldBeEqual()
         {
             //arrange
-            var employee = new Employee("Bartosz", "", 14);
+            var employee = new Employee("Bartosz", "", 14, 'M');
             employee.AddScore(60);
             employee.AddScore(100);
             //act

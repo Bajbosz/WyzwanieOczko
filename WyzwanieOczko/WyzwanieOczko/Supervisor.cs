@@ -1,10 +1,13 @@
-﻿namespace WyzwanieOczko
+﻿
+using static System.Formats.Asn1.AsnWriter;
+
+namespace WyzwanieOczko
 {
-    public class Employee : IEmployee
+    public class Supervisor : IEmployee
     {
         private List<float> score = new List<float>();
 
-        public Employee(string name, string surname)
+        public Supervisor(string name, string surname)
         {
             this.Name = name;
             this.SurName = surname;
@@ -20,24 +23,75 @@
         }
         public void AddScore(float punkt)
         {
-            if (punkt >=0 && punkt<=100)
+            if (punkt >= 0 && punkt <= 100)
             {
-                this.score.Add(punkt);           
+                this.score.Add(punkt);
             }
-            else 
+            else
             {
                 throw new Exception("Wrong data");
             }
         }
         public void AddScore(string punkt)
         {
-            if(float.TryParse(punkt,out float result))
+            switch (punkt)
             {
-                this.AddScore(result);
-            }
-            else
-            {
-                throw new Exception("Wrong string");
+                case "6":
+                    this.AddScore(100);
+                    break;
+                case "5":
+                    this.AddScore(80);
+                    break;
+                case "-5":
+                case "5-":
+                    this.AddScore(75);
+                    break;
+                case "+5":
+                case "5+":
+                    this.AddScore(85);
+                    break;
+                case "4":
+                    this.AddScore(60);
+                    break;
+                case "-4":
+                case "4-":
+                    this.AddScore(55);
+                    break;
+                case "+4":
+                case "4+":
+                    this.AddScore(65);
+                    break;
+                case "3":
+                    this.AddScore(40);
+                    break;
+                case "-3":
+                case "3-":
+                    this.AddScore(35);
+                    break;
+                case "3+":
+                case "+3":
+                    this.AddScore(45);
+                    break;
+                case "2":
+                    this.AddScore(20);
+                    break;
+                case "-2":
+                case "2-":
+                    this.AddScore(15);
+                    break;
+                case "2+":
+                case "+2":
+                    this.AddScore(25);
+                    break;
+                case "1":
+                    this.AddScore(0);
+                    break;
+                case "1+":
+                case "+1":
+                    this.AddScore(5);
+                    break;
+                default:
+                    throw new Exception("Wrong Letter");
             }
         }
         public void AddScore(int punkt)
@@ -86,17 +140,17 @@
             statistics.Avg = 0;
             statistics.Max = float.MinValue;
             statistics.Min = float.MaxValue;
-            foreach (var score in this.score) 
+            foreach (var score in this.score)
             {
                 statistics.Max = Math.Max(statistics.Max, score);
                 statistics.Min = Math.Min(statistics.Min, score);
                 statistics.Avg += score;
             }
             statistics.Avg /= this.score.Count;
-            switch(statistics.Avg)
+            switch (statistics.Avg)
             {
                 case var avg when avg > 80:
-                        statistics.AvgLetter = 'A';
+                    statistics.AvgLetter = 'A';
                     break;
                 case var avg when avg > 60:
                     statistics.AvgLetter = 'B';
@@ -144,7 +198,7 @@
             } while (index < this.score.Count);
             statistics.Avg /= this.score.Count;
             return statistics;
-        }    
+        }
         public Statistics GetStatisticsWhile()
         {
             var statistics = new Statistics();
@@ -152,7 +206,7 @@
             statistics.Max = float.MinValue;
             statistics.Min = float.MaxValue;
             var index = 0;
-            while (index < this.score.Count) 
+            while (index < this.score.Count)
             {
                 statistics.Max = Math.Max(statistics.Max, this.score[index]);
                 statistics.Min = Math.Min(statistics.Min, this.score[index]);
