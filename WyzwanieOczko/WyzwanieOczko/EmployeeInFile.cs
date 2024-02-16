@@ -16,7 +16,7 @@ namespace WyzwanieOczko
             {
                 using (var writer = File.AppendText(fileName))
                 {
-                    writer.WriteLine(score);
+                    this.AddScore(score);
                 }
             }
             else
@@ -31,7 +31,7 @@ namespace WyzwanieOczko
             {
                 using (var writer = File.AppendText(fileName))
                 {
-                    writer.WriteLine(result);
+                    this.AddScore(score);
                 }
             }
             else
@@ -43,7 +43,7 @@ namespace WyzwanieOczko
         {
             using (var writer = File.AppendText(fileName))
             {
-                writer.WriteLine(score);
+                this.AddScore(score);
             }
         }
 
@@ -51,7 +51,7 @@ namespace WyzwanieOczko
         {
             using (var writer = File.AppendText(fileName))
             {
-                writer.WriteLine(score);
+                this.AddScore(score);
             }
         }
 
@@ -59,7 +59,7 @@ namespace WyzwanieOczko
         {
             using (var writer = File.AppendText(fileName))
             {
-                writer.WriteLine(score);
+                this.AddScore(score);
             }
         }
 
