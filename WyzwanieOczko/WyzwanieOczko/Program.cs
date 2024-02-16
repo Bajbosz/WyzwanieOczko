@@ -3,8 +3,9 @@ Console.WriteLine(" || Witamy w programie do oceny pracownika || ");
 Console.WriteLine("----------------------------------------------");
 Console.WriteLine("");
 EmployeeInFile user0 = new EmployeeInFile("Bartosz", "Moto"); //, 44, 'M'
-user0.AddScore(5);
-user0.AddScore(0.5F);
+user0.AddScore("50");
+user0.AddScore(0.5f);
+user0.AddScore(99);
 
 /*
 while (true)

@@ -4,24 +4,24 @@ namespace WyzwanieOczko
 {
     internal class EmployeeInFile : EmployeeBase
     {
-        private const string fileName = "grade.txt";
         public EmployeeInFile(string name, string surname)
             : base(name, surname)
         {
         }
+        private const string fileName = "grade.txt";
 
         public override void AddScore(float score)
-        {
+        { 
             if (score >= 0 && score <= 100)
             {
                 using (var writer = File.AppendText(fileName))
                 {
-                    this.AddScore(score);
-                }
+                    writer.WriteLine(score);
+                }     
             }
             else
             {
-                throw new Exception("Wrong data");
+                throw new ArgumentException("Wrong data", nameof(score));
             }
         }
 
@@ -29,9 +29,9 @@ namespace WyzwanieOczko
         {
             if (float.TryParse(score, out float result))
             {
-                using (var writer = File.AppendText(fileName))
+               
                 {
-                    this.AddScore(score);
+                    this.AddScore(result);
                 }
             }
             else
@@ -41,59 +41,46 @@ namespace WyzwanieOczko
         }
         public override void AddScore(int score)
         {
-            using (var writer = File.AppendText(fileName))
-            {
-                this.AddScore(score);
-            }
+            this.AddScore((float)score);
         }
 
         public override void AddScore(double score)
         {
-            using (var writer = File.AppendText(fileName))
-            {
-                this.AddScore(score);
-            }
+            this.AddScore((float)score);
         }
 
         public override void AddScore(long score)
         {
-            using (var writer = File.AppendText(fileName))
-            {
-                this.AddScore(score);
-            }
+            this.AddScore((float)score);
         }
 
         public override void AddScore(char score)
         {
-            using (var writer = File.AppendText(fileName))
-            {
-
                 switch (score)
                 {
                     case 'A':
                     case 'a':
-                        writer.WriteLine(100);
+                        this.AddScore(100);
                         break;
                     case 'B':
                     case 'b':
-                        writer.WriteLine(80);
+                        this.AddScore(80);
                         break;
                     case 'C':
                     case 'c':
-                        writer.WriteLine(60);
+                        this.AddScore(60);
                         break;
                     case 'D':
                     case 'd':
-                        writer.WriteLine(40);
+                        this.AddScore(40);
                         break;
                     case 'E':
                     case 'e':
-                        writer.WriteLine(50);
+                        this.AddScore(50);
                         break;
                     default:
                         throw new Exception("Wrong Letter");
                 }
-            }
         }
 
         public override Statistics GetStatistics()
