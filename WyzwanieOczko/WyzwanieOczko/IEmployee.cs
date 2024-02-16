@@ -4,7 +4,6 @@
     {
         string Name { get; }
         string SurName { get; }
-        float Result { get; }
         void AddScore(float score);
         void AddScore(string score);
         void AddScore(int score);

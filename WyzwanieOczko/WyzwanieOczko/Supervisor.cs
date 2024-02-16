@@ -14,13 +14,6 @@ namespace WyzwanieOczko
         }
         public string Name { get; private set; }
         public string SurName { get; private set; }
-        public float Result
-        {
-            get
-            {
-                return this.score.Sum();
-            }
-        }
         public void AddScore(float punkt)
         {
             if (punkt >= 0 && punkt <= 100)

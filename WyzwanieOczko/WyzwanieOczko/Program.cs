@@ -2,7 +2,11 @@
 Console.WriteLine(" || Witamy w programie do oceny pracownika || ");
 Console.WriteLine("----------------------------------------------");
 Console.WriteLine("");
-Supervisor user0 = new Supervisor("Bartosz", "Moto"); //, 44, 'M'
+EmployeeInFile user0 = new EmployeeInFile("Bartosz", "Moto"); //, 44, 'M'
+user0.AddScore(5);
+user0.AddScore(0.5F);
+
+/*
 while (true)
 {
         Console.WriteLine("Podaj oceneę pracownika:");
@@ -19,7 +23,7 @@ while (true)
     { 
         Console.WriteLine(ex.Message);
     }    
-}
+}*/
 var statistics = user0.GetStatistics();
 Console.WriteLine($"Avg: {statistics.Avg}");
 Console.WriteLine($"Max: {statistics.Max}");
