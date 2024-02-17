@@ -4,6 +4,7 @@ namespace WyzwanieOczko
 {
     internal class EmployeeInFile : EmployeeBase
     {
+
         public EmployeeInFile(string name, string surname)
             : base(name, surname)
         {
@@ -11,13 +12,13 @@ namespace WyzwanieOczko
         private const string fileName = "grade.txt";
 
         public override void AddScore(float score)
-        { 
+        {
             if (score >= 0 && score <= 100)
             {
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(score);
-                }     
+                }
             }
             else
             {
@@ -29,7 +30,6 @@ namespace WyzwanieOczko
         {
             if (float.TryParse(score, out float result))
             {
-               
                 {
                     this.AddScore(result);
                 }
@@ -39,6 +39,7 @@ namespace WyzwanieOczko
                 throw new Exception("Wrong string");
             }
         }
+
         public override void AddScore(int score)
         {
             this.AddScore((float)score);
@@ -56,31 +57,31 @@ namespace WyzwanieOczko
 
         public override void AddScore(char score)
         {
-                switch (score)
-                {
-                    case 'A':
-                    case 'a':
-                        this.AddScore(100);
-                        break;
-                    case 'B':
-                    case 'b':
-                        this.AddScore(80);
-                        break;
-                    case 'C':
-                    case 'c':
-                        this.AddScore(60);
-                        break;
-                    case 'D':
-                    case 'd':
-                        this.AddScore(40);
-                        break;
-                    case 'E':
-                    case 'e':
-                        this.AddScore(50);
-                        break;
-                    default:
-                        throw new Exception("Wrong Letter");
-                }
+            switch (score)
+            {
+                case 'A':
+                case 'a':
+                    this.AddScore(100);
+                    break;
+                case 'B':
+                case 'b':
+                    this.AddScore(80);
+                    break;
+                case 'C':
+                case 'c':
+                    this.AddScore(60);
+                    break;
+                case 'D':
+                case 'd':
+                    this.AddScore(40);
+                    break;
+                case 'E':
+                case 'e':
+                    this.AddScore(50);
+                    break;
+                default:
+                    throw new Exception("Wrong Letter");
+            }
         }
 
         public override Statistics GetStatistics()
@@ -89,30 +90,32 @@ namespace WyzwanieOczko
             var result = this.CountDataStatistics(DataFromFile);
             return result;
         }
-            private List<float> ReadDataFromFile()
+
+        private List<float> ReadDataFromFile()
+        {
+            var grades = new List<float>();
+            if (File.Exists($"{fileName}"))
             {
-                var grades = new List<float>();
-                if (File.Exists($"{fileName}"))
+                using (var reader = File.OpenText($"{fileName}"))
                 {
-                    using (var reader = File.OpenText($"{fileName}"))
+                    var line = reader.ReadLine();
+                    while (line != null)
                     {
-                        var line = reader.ReadLine();
-                        while (line != null)
-                        {
-                            var number = float.Parse(line);
-                            grades.Add(number);
-                            line = reader.ReadLine();
-                        }
+                        var number = float.Parse(line);
+                        grades.Add(number);
+                        line = reader.ReadLine();
                     }
                 }
-                return grades;
-            }   
+            }
+            return grades;
+        }
+
         private Statistics CountDataStatistics(List<float> grades)
         {
             var statistics = new Statistics();
             statistics.Avg = 0;
             statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;           
+            statistics.Min = float.MaxValue;
             foreach (var grade in grades)
             {
                 statistics.Max = Math.Max(statistics.Max, grade);
