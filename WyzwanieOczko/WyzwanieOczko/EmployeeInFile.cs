@@ -4,13 +4,15 @@ namespace WyzwanieOczko
 {
     internal class EmployeeInFile : EmployeeBase
     {
+        private const string fileName = "grade.txt";
+
+        public override event GradeAddedDelegate GradeAdded;
 
         public EmployeeInFile(string name, string surname)
             : base(name, surname)
         {
         }
-        private const string fileName = "grade.txt";
-
+        
         public override void AddScore(float score)
         {
             if (score >= 0 && score <= 100)
@@ -18,6 +20,10 @@ namespace WyzwanieOczko
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(score);
+                }
+                if ( GradeAdded != null) 
+                {
+                    GradeAdded(this, new EventArgs());
                 }
             }
             else

@@ -1,4 +1,6 @@
-﻿namespace WyzwanieOczko
+﻿using static WyzwanieOczko.EmployeeBase;
+
+namespace WyzwanieOczko
 {
     public interface IEmployee
     {
@@ -10,6 +12,7 @@
         void AddScore(double score);
         void AddScore(long score);
         void AddScore(char score);
+        event GradeAddedDelegate GradeAdded;
         Statistics GetStatistics();
 
     }
