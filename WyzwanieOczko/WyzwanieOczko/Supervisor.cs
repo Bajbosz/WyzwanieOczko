@@ -1,10 +1,10 @@
-﻿
-using static System.Formats.Asn1.AsnWriter;
-
-namespace WyzwanieOczko
+﻿namespace WyzwanieOczko
 {
     public class Supervisor : IEmployee
     {
+        public delegate void GradeAddedDelegate(object sennder, EventArgs args);
+
+
         private List<float> score = new List<float>();
 
         public Supervisor(string name, string surname)
@@ -12,6 +12,20 @@ namespace WyzwanieOczko
             this.Name = name;
             this.SurName = surname;
         }
+
+       event EmployeeBase.GradeAddedDelegate IEmployee.GradeAdded
+        {
+            add
+            {
+                throw new NotImplementedException();
+            }
+
+            remove
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public string Name { get; private set; }
         public string SurName { get; private set; }
         public void AddScore(float punkt)

@@ -35,8 +35,8 @@ namespace WyzwanieOczkoTests
         public void SurnameShouldbyEqual()
         {
             //arrange
-            var employee0 = GetEmployee("Błażej", "Nowak", 13);
-            var employee1 = GetEmployee("Konrad", "Nowak", 15);
+            var employee0 = GetEmployee("Błażej", "Nowak");
+            var employee1 = GetEmployee("Konrad", "Nowak");
 
             //assert
 
@@ -47,8 +47,8 @@ namespace WyzwanieOczkoTests
         public void NameShouldbyNotEqual()
         {
             //arrange
-            var employee0 = GetEmployee("Błażej", "Nowak", 13);
-            var employee1 = GetEmployee("Konrad", "Nowak", 15);
+            var employee0 = GetEmployee("Błażej", "Nowak");
+            var employee1 = GetEmployee("Konrad", "Nowak");
 
             //assert
 
@@ -59,17 +59,17 @@ namespace WyzwanieOczkoTests
         public void ObjShouldbyNotEqual()
         {
             //arrange
-            var employee0 = GetEmployee("Błażej", "Nowak", 13);
-            var employee1 = GetEmployee("Konrad", "Nowak", 15);
+            var employee0 = GetEmployee("Błażej", "Nowak");
+            var employee1 = GetEmployee("Konrad", "Nowak");
 
             //assert
 
             Assert.AreNotEqual(employee0, employee1);
         }
 
-        private Employee GetEmployee(string name, string surname, int age)
+        private EmployeeInMemory GetEmployee(string name, string surname)
         {
-            return new Employee(name, surname, age);
+            return new EmployeeInMemory(name, surname);
         }
 
     }
