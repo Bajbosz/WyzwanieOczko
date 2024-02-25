@@ -119,33 +119,9 @@ namespace WyzwanieOczko
         private Statistics CountDataStatistics(List<float> grades)
         {
             var statistics = new Statistics();
-            statistics.Avg = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-            foreach (var grade in grades)
-            {
-                statistics.Max = Math.Max(statistics.Max, grade);
-                statistics.Min = Math.Min(statistics.Min, grade);
-                statistics.Avg += grade;
-            }
-            statistics.Avg /= grades.Count;
-            switch (statistics.Avg)
-            {
-                case var avg when avg > 80:
-                    statistics.AvgLetter = 'A';
-                    break;
-                case var avg when avg > 60:
-                    statistics.AvgLetter = 'B';
-                    break;
-                case var avg when avg > 40:
-                    statistics.AvgLetter = 'C';
-                    break;
-                case var avg when avg > 20:
-                    statistics.AvgLetter = 'D';
-                    break;
-                default:
-                    statistics.AvgLetter = 'E';
-                    break;
+            foreach(var grade in grades)
+            { 
+                statistics.AddGrade(grade);
             }
             return statistics;
         }

@@ -2,7 +2,7 @@
 Console.WriteLine(" || Witamy w programie do oceny pracownika || ");
 Console.WriteLine("----------------------------------------------");
 Console.WriteLine("");
-EmployeeInMemory user0 = new EmployeeInMemory("Bartosz", "Moto"); //, 44, 'M'
+EmployeeInFile user0 = new EmployeeInFile("Bartosz", "Moto"); //, 44, 'M'
 user0.GradeAdded += EmployeeGradeAdded;
 
     void EmployeeGradeAdded(object sender, EventArgs args)
@@ -10,15 +10,15 @@ user0.GradeAdded += EmployeeGradeAdded;
     Console.WriteLine("Dodano nową ocene");
 }
 
-
+/*
 user0.AddScore("50");
 user0.AddScore(0.5f);
 user0.AddScore(99);
+*/
 
-/*
 while (true)
 {
-        Console.WriteLine("Podaj oceneę pracownika:");
+        Console.WriteLine("Podaj ocenę pracownika:");
         var input = Console.ReadLine();
         if (input == "q")
         {
@@ -32,7 +32,7 @@ while (true)
     { 
         Console.WriteLine(ex.Message);
     }    
-}*/
+}
 var statistics = user0.GetStatistics();
 Console.WriteLine($"Avg: {statistics.Avg}");
 Console.WriteLine($"Max: {statistics.Max}");
